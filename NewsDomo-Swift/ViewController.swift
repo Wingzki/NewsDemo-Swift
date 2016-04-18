@@ -68,16 +68,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         Alamofire.request(Method.GET, url).responseJSON { response in
             
-            if let dic = response.result.value as? NSDictionary {
+            switch response.result {
+            case .Success:
                 
-                if let tempArray = dic["T1348647853363"] as? NSArray {
+                if let dic = response.result.value as? NSDictionary {
                     
-                    let dataArray  = tempArray.subarrayWithRange(NSRange(location: 1,length: tempArray.count - 1))
-                    self.newsArray = dataArray
-                    
-                    self.tableView.reloadData()
+                    if let tempArray = dic["T1348647853363"] as? NSArray {
+                        
+                        let dataArray  = tempArray.subarrayWithRange(NSRange(location: 1,length: tempArray.count - 1))
+                        self.newsArray = dataArray
+                        
+                        self.tableView.reloadData()
+                        
+                    }
                     
                 }
+        
+            case .Failure:
+                print(response.result.error)
                 
             }
             
