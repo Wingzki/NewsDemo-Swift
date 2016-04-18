@@ -16,8 +16,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let CellSnap  = "SnapTableViewCell"
     let CellImage = "ImageTableViewCell"
     
-    
-    var newsArray : NSArray? = []
+    var newsArray : NSArray?
     var tableView = UITableView()
     
     override func viewDidLoad() {
@@ -33,10 +32,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    //    MSAK: - ViewSetup
+    //    MARK: - ViewSetup
     
     func addSubView() {
         
@@ -60,7 +58,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
-    //    MASK: - Private
+    //    MARK: - Private
     
     func getDataFromServer() {
         
@@ -93,11 +91,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
-    //    MASK: - delegate
+    //    MARK: - delegate
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return (self.newsArray?.count)!
+        if let count = self.newsArray?.count {
+            
+            return count
+            
+        }
+        
+        return 0
         
     }
     
@@ -107,14 +111,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             let cell : SnapTableViewCell = tableView.dequeueReusableCellWithIdentifier(CellSnap) as! SnapTableViewCell
             
-            let data : NSDictionary = self.newsArray![indexPath.row] as! NSDictionary
-            
-            let url : String = data["img"] as! String
-            
-            cell.titleLabel.text  = data["title"] as! String?
-            cell.detailLabel.text = data["digest"] as! String?
-            
-            cell.testImageView.kf_setImageWithURL(NSURL.init(string: url)!)
+            if let data : NSDictionary = self.newsArray?[indexPath.row] as? NSDictionary {
+                
+                cell.titleLabel.text  = data["title"] as? String
+                cell.detailLabel.text = data["digest"] as? String
+                
+                if let url : String = data["img"] as? String {
+
+                     cell.testImageView.kf_setImageWithURL(NSURL.init(string: url)!)
+                    
+                }
+                
+            }
             
             return cell
             
@@ -122,12 +130,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             let cell : ImageTableViewCell = tableView.dequeueReusableCellWithIdentifier(CellImage) as! ImageTableViewCell
             
-            let data : NSDictionary = self.newsArray![indexPath.row] as! NSDictionary
-            
-            let url : String = data["img"] as! String
-            
-            cell.titleLabel.text = data["title"] as! String?
-            cell.bigImageView.kf_setImageWithURL(NSURL.init(string: url)!)
+            if let data : NSDictionary = self.newsArray?[indexPath.row] as? NSDictionary {
+                
+                cell.titleLabel.text  = data["title"] as? String
+                
+                if let url : String = data["img"] as? String {
+                    
+                    cell.bigImageView.kf_setImageWithURL(NSURL.init(string: url)!)
+                    
+                }
+                
+            }
             
             return cell
             
