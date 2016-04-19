@@ -17,6 +17,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let CellImage = "ImageTableViewCell"
     
     var newsArray : NSArray?
+    var imageURLArray : Array<String>?
+    
+    var topView : ScrollImageView?
     var tableView = UITableView()
     
     override func viewDidLoad() {
@@ -46,6 +49,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.tableView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
         
+        self.topView = ScrollImageView.init(frame: CGRectMake(0, 0, self.view.bounds.width, 150))
+        
     }
     
     func setupSubview() {
@@ -73,8 +78,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     
                     if let tempArray = dic["T1348647853363"] as? NSArray {
                         
+                        self.handleURLData(tempArray)
+                        
                         let dataArray  = tempArray.subarrayWithRange(NSRange(location: 1,length: tempArray.count - 1))
                         self.newsArray = dataArray
+                        
+                        self.tableView.tableHeaderView = self.topView
                         
                         self.tableView.reloadData()
                         
@@ -84,6 +93,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
             case .Failure:
                 print(response.result.error)
+                
+            }
+            
+        }
+        
+    }
+    
+    func handleURLData(dataArray: NSArray) {
+        
+        if let urlDic = dataArray[0] as? NSDictionary {
+            
+            if let adArray = urlDic["ads"] as? NSArray {
+                
+                self.topView!.imageURLArray = adArray.map({ adDic -> String in
+                    
+                    if let url = adDic["imgsrc"] as? String {
+                        
+                        return url
+                        
+                    }
+                    
+                    return ""
+                    
+                })
                 
             }
             

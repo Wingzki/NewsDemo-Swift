@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4AD361936176F8F5ED20097D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548EF5D7FDEE1190D0A54E6C /* Pods.framework */; };
+		C939EBFA1CC66F930099E20C /* ScrollImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C939EBF91CC66F930099E20C /* ScrollImageView.swift */; };
 		C94247841CBD42E4008321F7 /* SnapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94247831CBD42E4008321F7 /* SnapTableViewCell.swift */; };
 		C99AF6BE1CB6A6AF008DC7BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF6BD1CB6A6AF008DC7BA /* AppDelegate.swift */; };
 		C99AF6C01CB6A6AF008DC7BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF6BF1CB6A6AF008DC7BA /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 		548EF5D7FDEE1190D0A54E6C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F665342FE80255C77F8B4A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		79764083C2DD2B1B012FAA2A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C939EBF91CC66F930099E20C /* ScrollImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollImageView.swift; sourceTree = "<group>"; };
 		C94247831CBD42E4008321F7 /* SnapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapTableViewCell.swift; sourceTree = "<group>"; };
 		C99AF6BA1CB6A6AF008DC7BA /* NewsDomo-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NewsDomo-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C99AF6BD1CB6A6AF008DC7BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				C94247831CBD42E4008321F7 /* SnapTableViewCell.swift */,
 				C9E665931CBE9185002EF3AB /* ImageTableViewCell.swift */,
 				C9E665951CBE919A002EF3AB /* SmallImageTableViewCell.swift */,
+				C939EBF91CC66F930099E20C /* ScrollImageView.swift */,
 			);
 			path = "NewsDomo-Swift";
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C99AF6C01CB6A6AF008DC7BA /* ViewController.swift in Sources */,
+				C939EBFA1CC66F930099E20C /* ScrollImageView.swift in Sources */,
 				C9E665941CBE9185002EF3AB /* ImageTableViewCell.swift in Sources */,
 				C94247841CBD42E4008321F7 /* SnapTableViewCell.swift in Sources */,
 				C99AF6BE1CB6A6AF008DC7BA /* AppDelegate.swift in Sources */,
