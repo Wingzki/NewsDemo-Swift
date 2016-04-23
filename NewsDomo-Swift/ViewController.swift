@@ -11,7 +11,7 @@ import UIKit
 import Alamofire
 import Kingfisher
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TitleSegmentDelegate {
     
     let CellSnap  = "SnapTableViewCell"
     let CellImage = "ImageTableViewCell"
@@ -59,6 +59,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func setupSubview() {
+        
+        self.segment?.delegate = self
         
         self.tableView.delegate   = self
         self.tableView.dataSource = self
@@ -199,6 +201,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }else {
             return 150.0
         }
+        
+    }
+    
+    func buttonDidClicked(index: Int) {
+        
+        print("点击\(index)")
         
     }
     

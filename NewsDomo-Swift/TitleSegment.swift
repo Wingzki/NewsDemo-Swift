@@ -8,8 +8,16 @@
 
 import UIKit
 
+protocol TitleSegmentDelegate : class {
+    
+    func buttonDidClicked(index : Int)
+    
+}
+
 class TitleSegment: UIView {
 
+    weak var delegate : TitleSegmentDelegate?
+    
     var titleArray : Array<String>? {
         
         didSet {
@@ -59,6 +67,8 @@ class TitleSegment: UIView {
                 let button = UIButton()
                 button.frame = CGRectMake(CGFloat(i) * width, 0, width, frame.size.height)
                 button.backgroundColor = UIColor.greenColor()
+                button.addTarget(self, action: #selector(buttonClicked(button:)), forControlEvents: UIControlEvents.TouchUpInside)
+                button.tag = i
                 self.scrollView.addSubview(button)
                 
                 if let title = self.titleArray?[i] {
@@ -75,12 +85,10 @@ class TitleSegment: UIView {
         
     }
     
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
+    func buttonClicked(button button : UIButton) {
+        
+        self.delegate?.buttonDidClicked(button.tag)
+        
     }
-    */
 
 }
