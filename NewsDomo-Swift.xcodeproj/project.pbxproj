@@ -17,6 +17,7 @@
 		C99AF6C81CB6A6AF008DC7BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C99AF6C61CB6A6AF008DC7BA /* LaunchScreen.storyboard */; };
 		C99AF6D31CB6A6AF008DC7BA /* NewsDomo_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF6D21CB6A6AF008DC7BA /* NewsDomo_SwiftTests.swift */; };
 		C99AF6DE1CB6A6AF008DC7BA /* NewsDomo_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF6DD1CB6A6AF008DC7BA /* NewsDomo_SwiftUITests.swift */; };
+		C9BF0E441CCBB0D00008955E /* TitleSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF0E431CCBB0D00008955E /* TitleSegment.swift */; };
 		C9E665941CBE9185002EF3AB /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E665931CBE9185002EF3AB /* ImageTableViewCell.swift */; };
 		C9E665961CBE919A002EF3AB /* SmallImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E665951CBE919A002EF3AB /* SmallImageTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		C99AF6D91CB6A6AF008DC7BA /* NewsDomo-SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NewsDomo-SwiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C99AF6DD1CB6A6AF008DC7BA /* NewsDomo_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDomo_SwiftUITests.swift; sourceTree = "<group>"; };
 		C99AF6DF1CB6A6AF008DC7BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9BF0E431CCBB0D00008955E /* TitleSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleSegment.swift; sourceTree = "<group>"; };
 		C9E665931CBE9185002EF3AB /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		C9E665951CBE919A002EF3AB /* SmallImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallImageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +141,7 @@
 				C9E665931CBE9185002EF3AB /* ImageTableViewCell.swift */,
 				C9E665951CBE919A002EF3AB /* SmallImageTableViewCell.swift */,
 				C939EBF91CC66F930099E20C /* ScrollImageView.swift */,
+				C9BF0E431CCBB0D00008955E /* TitleSegment.swift */,
 			);
 			path = "NewsDomo-Swift";
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				C94247841CBD42E4008321F7 /* SnapTableViewCell.swift in Sources */,
 				C99AF6BE1CB6A6AF008DC7BA /* AppDelegate.swift in Sources */,
 				C9E665961CBE919A002EF3AB /* SmallImageTableViewCell.swift in Sources */,
+				C9BF0E441CCBB0D00008955E /* TitleSegment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

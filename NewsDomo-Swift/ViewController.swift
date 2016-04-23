@@ -19,6 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var newsArray : NSArray?
     var imageURLArray : Array<String>?
     
+    var segment : TitleSegment?
     var topView : ScrollImageView?
     var tableView = UITableView()
     
@@ -28,6 +29,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         addSubView()
         setupSubview()
         setupLayout()
+        setupData()
         
         getDataFromServer()
         
@@ -41,15 +43,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func addSubView() {
         
+        self.segment = TitleSegment.init(frame: CGRectMake(0, 20, self.view.bounds.width, 30))
+        
         self.view.addSubview(tableView)
+        self.view.addSubview(segment!)
         
     }
     
     func setupLayout() {
         
-        self.tableView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
-        
         self.topView = ScrollImageView.init(frame: CGRectMake(0, 0, self.view.bounds.width, 150))
+        
+        self.tableView.frame = CGRectMake(0, 50, self.view.bounds.width, self.view.bounds.height - 30)
         
     }
     
@@ -60,6 +65,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.tableView.registerClass(SnapTableViewCell.self, forCellReuseIdentifier: CellSnap)
         self.tableView.registerClass(ImageTableViewCell.self, forCellReuseIdentifier: CellImage)
+        
+    }
+    
+    func setupData() {
+        
+        self.segment?.titleArray = ["01", "02", "03" ,"04" ,"05", "06", "07"]
         
     }
     
