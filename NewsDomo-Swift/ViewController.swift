@@ -13,6 +13,10 @@ import Kingfisher
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TitleSegmentDelegate {
     
+    let firstURL = "http://c.m.163.com/nc/article/headline/T1348647853363/0-20.html?from=toutiao&passport=&devId=ECIDH5J3VtJNmnlsgmFGFUgU324iLqCs%2FTN6KzBE6GrzJ6En48foT5R9wH%2FOcJXY&size=20&version=6.0&spever=false&net=wifi&lat=BNsQafMiQurgbJgINKDqOA%3D%3D&lon=bSHK%2B1pn5rA0G0bX3U5%2FOQ%3D%3D&ts=1460300866&sign=sZkXOQmPZa571vREFlmf4Ko0tVPzkKGHYxTTQ3x8M1N48ErR02zJ6%2FKXOnxX046I&encryption=1&canal=appstore"
+    
+    let second = "http://c.3g.163.com/nc/article/headline/T1348647853363/20-20.html?from=toutiao&passport=&devId=ECIDH5J3VtJNmnlsgmFGFUgU324iLqCs%2FTN6KzBE6GrzJ6En48foT5R9wH%2FOcJXY&size=20&version=7.0&spever=false&net=wifi&lat=&lon=&ts=1461501767&sign=mXgNK3x2QjdojToKQTv6IaORy9YlCvx7kPOlbxq9e2B48ErR02zJ6%2FKXOnxX046I&encryption=1&canal=appstore"
+    
     let CellSnap  = "SnapTableViewCell"
     let CellImage = "ImageTableViewCell"
     
@@ -90,7 +94,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func getDataFromServer() {
         
-        let url = "http://c.m.163.com/nc/article/headline/T1348647853363/0-20.html?from=toutiao&passport=&devId=ECIDH5J3VtJNmnlsgmFGFUgU324iLqCs%2FTN6KzBE6GrzJ6En48foT5R9wH%2FOcJXY&size=20&version=6.0&spever=false&net=wifi&lat=BNsQafMiQurgbJgINKDqOA%3D%3D&lon=bSHK%2B1pn5rA0G0bX3U5%2FOQ%3D%3D&ts=1460300866&sign=sZkXOQmPZa571vREFlmf4Ko0tVPzkKGHYxTTQ3x8M1N48ErR02zJ6%2FKXOnxX046I&encryption=1&canal=appstore"
+        let url = firstURL
         
         Alamofire.request(Method.GET, url).responseJSON { response in
             
@@ -101,7 +105,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     
                     if let tempArray = dic["T1348647853363"] as? NSArray {
                         
-                        self.handleURLData(tempArray)
+                        self.handleBannerData(tempArray)
                         
                         let dataArray  = tempArray.subarrayWithRange(NSRange(location: 1,length: tempArray.count - 1))
                         self.newsArray = dataArray
@@ -123,7 +127,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
-    func handleURLData(dataArray: NSArray) {
+    func handleNewsData(dataArray: NSArray, isLoadMore: Bool) {
+        
+    }
+    
+    func handleBannerData(dataArray: NSArray) {
         
         if let urlDic = dataArray[0] as? NSDictionary {
             
