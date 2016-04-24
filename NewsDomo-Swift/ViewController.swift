@@ -10,6 +10,7 @@ import UIKit
 
 import Alamofire
 import Kingfisher
+import PullToRefresh
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TitleSegmentDelegate {
     
@@ -26,6 +27,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var segment : TitleSegment?
     var topView : ScrollImageView?
     var tableView = UITableView()
+    var refresher = PullToRefresh()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +84,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.registerClass(SnapTableViewCell.self, forCellReuseIdentifier: CellSnap)
         self.tableView.registerClass(ImageTableViewCell.self, forCellReuseIdentifier: CellImage)
         
+        self.tableView.addPullToRefresh(self.refresher) { 
+            
+            self.getDataFromServer01()
+            
+        }
+    
     }
     
     func setupData() {
@@ -127,9 +135,40 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
-    func handleNewsData(dataArray: NSArray, isLoadMore: Bool) {
+    func getDataFromServer01() {
+        
+        let url = second
+        
+        Alamofire.request(Method.GET, url).responseJSON { response in
+            
+            self.tableView.endRefreshing()
+            
+            switch response.result {
+            case .Success:
+                
+                if let dic = response.result.value as? NSDictionary {
+                    
+                    if let tempArray = dic["T1348647853363"] as? NSArray {
+                        
+                        self.newsArray = tempArray
+                        
+                        self.tableView.tableHeaderView = self.topView
+                        
+                        self.tableView.reloadData()
+                        
+                    }
+                    
+                }
+                
+            case .Failure:
+                print(response.result.error)
+                
+            }
+            
+        }
         
     }
+
     
     func handleBannerData(dataArray: NSArray) {
         
