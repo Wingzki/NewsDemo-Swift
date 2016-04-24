@@ -36,7 +36,7 @@ class TitleSegment: UIView {
         
         let temp = UIScrollView();
         temp.showsHorizontalScrollIndicator = false
-        temp.backgroundColor = UIColor.redColor()
+        temp.backgroundColor = UIColor.init(colorLiteralRed: 246.0/255.0, green: 246.0/255.0, blue: 246.0/255.0, alpha: 1)
         
         return temp
     }()
@@ -70,14 +70,14 @@ class TitleSegment: UIView {
                 
                 let button = UIButton()
                 button.frame = CGRectMake(CGFloat(i) * width, 0, width, frame.size.height)
-                button.backgroundColor = UIColor.greenColor()
+                button.backgroundColor = UIColor.clearColor()
                 button.addTarget(self, action: #selector(buttonClicked(button:)), forControlEvents: UIControlEvents.TouchUpInside)
                 button.tag = i + buttonTagBase
                 self.scrollView.addSubview(button)
                 
-                button.setTitleColor(UIColor.redColor(), forState: UIControlState.Selected)
+                button.setTitleColor(UIColor.init(colorLiteralRed: 220.0/255.0, green: 50.0/255.0, blue: 55.0/255.0, alpha: 1), forState:.Selected)
                 
-                button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+                button.setTitleColor(UIColor.init(colorLiteralRed: 74.0/255.0, green: 74.0/255.0, blue: 74.0/255.0, alpha: 1), forState:.Normal)
                 
                 if let title = self.titleArray?[i] {
                     

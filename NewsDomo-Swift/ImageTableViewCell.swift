@@ -39,15 +39,15 @@ class ImageTableViewCell: UITableViewCell {
         
         titleLabel.snp_makeConstraints { (make) in
             
-            make.left.top.right.equalTo(self.contentView).inset(UIEdgeInsetsMake(15, 15, 0, 15))
+            make.left.top.right.equalTo(self.contentView).inset(UIEdgeInsetsMake(10, 10, 0, 10))
             
         }
         
         bigImageView.snp_makeConstraints { (make) in
             
-            make.left.right.equalTo(self.contentView).inset(UIEdgeInsetsMake(0, 15, 0, 15))
-            make.top.equalTo(titleLabel.snp_bottom).offset(15)
-            make.bottom.equalTo(self.contentView).offset(-15)
+            make.left.right.equalTo(self.contentView).inset(UIEdgeInsetsMake(0, 10, 0, 10))
+            make.top.equalTo(titleLabel.snp_bottom).offset(10)
+            make.bottom.equalTo(self.contentView).offset(-10)
             
         }
     

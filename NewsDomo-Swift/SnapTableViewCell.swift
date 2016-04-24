@@ -30,8 +30,8 @@ class SnapTableViewCell: UITableViewCell {
         return label
     }()
     
-    var detailLabel   = UILabel()
-    var typeLabel     = UILabel()
+    var detailLabel = UILabel()
+    var typeLabel   = UILabel()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,31 +53,31 @@ class SnapTableViewCell: UITableViewCell {
         
         testImageView.snp_makeConstraints { (make) in
             
-            make.top.bottom.left.equalTo(self.contentView).inset(UIEdgeInsetsMake(15, 15, 15, 0))
-            make.width.equalTo(70)
+            make.top.bottom.left.equalTo(self.contentView).inset(UIEdgeInsetsMake(10, 10, 10, 0))
+            make.width.equalTo(90)
             
         }
         
         titleLabel.snp_makeConstraints { (make) in
             
-            make.left.equalTo(testImageView.snp_right).offset(15)
+            make.left.equalTo(testImageView.snp_right).offset(10)
             make.top.equalTo(testImageView)
-            make.right.equalTo(self.contentView).offset(-15)
+            make.right.equalTo(self.contentView).offset(-10)
             
         }
         
         detailLabel.snp_makeConstraints { (make) in
             
-            make.left.equalTo(testImageView.snp_right).offset(15)
+            make.left.equalTo(testImageView.snp_right).offset(10)
             make.bottom.equalTo(testImageView)
-            make.right.equalTo(self.contentView).offset(-15)
+            make.right.equalTo(self.contentView).offset(-10)
             
         }
         
         typeLabel.snp_makeConstraints { (make) in
             
-            make.bottom.equalTo(self.contentView).offset(-15)
-            make.right.equalTo(self.contentView).offset(-15)
+            make.bottom.equalTo(self.contentView).offset(-10)
+            make.right.equalTo(self.contentView).offset(-10)
             
         }
         

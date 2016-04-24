@@ -93,7 +93,7 @@ class ScrollImageView: UIView, UIScrollViewDelegate {
             
         }
         
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(timerHanle), userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: #selector(timerHanle), userInfo: nil, repeats: true)
     
     }
     

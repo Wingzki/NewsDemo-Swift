@@ -26,6 +26,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavgationBar()
         addSubView()
         setupSubview()
         setupLayout()
@@ -41,9 +42,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //    MARK: - ViewSetup
     
+    func setupNavgationBar() {
+        
+        self.navigationController?.navigationBar.translucent  = false
+        self.navigationController?.navigationBar.barTintColor = UIColor.init(colorLiteralRed: 0.86, green: 0.2, blue: 0.22, alpha: 1)
+        
+    }
+    
     func addSubView() {
         
-        self.segment = TitleSegment.init(frame: CGRectMake(0, 20, self.view.bounds.width, 30))
+        self.segment = TitleSegment.init(frame: CGRectMake(0, 0, self.view.bounds.width, 40))
         
         self.view.addSubview(tableView)
         self.view.addSubview(segment!)
@@ -52,13 +60,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func setupLayout() {
         
-        self.topView = ScrollImageView.init(frame: CGRectMake(0, 0, self.view.bounds.width, 150))
+        self.topView = ScrollImageView.init(frame: CGRectMake(0, 0, self.view.bounds.width, 190))
         
-        self.tableView.frame = CGRectMake(0, 50, self.view.bounds.width, self.view.bounds.height - 30)
+        self.tableView.frame = CGRectMake(0, 40, self.view.bounds.width, self.view.bounds.height - 40 - 64)
         
     }
     
     func setupSubview() {
+        
+        self.automaticallyAdjustsScrollViewInsets = false
         
         self.segment?.delegate = self
         
@@ -72,7 +82,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func setupData() {
         
-        self.segment?.titleArray = ["01", "02", "03" ,"04" ,"05", "06", "07"]
+        self.segment?.titleArray = ["头条", "娱乐", "热点" ,"体育" ,"北京", "网易", "财经", "科技"]
         
     }
     
@@ -197,9 +207,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         if indexPath.row % 2 == 0 {
-            return 100.0
+            return 90.0
         }else {
-            return 150.0
+            return 170.0
         }
         
     }

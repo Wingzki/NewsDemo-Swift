@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4AD361936176F8F5ED20097D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548EF5D7FDEE1190D0A54E6C /* Pods.framework */; };
+		342C66BE9557DDC101E2582F /* Pods_NewsDomo_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2BC265FC6DA218A3F90549 /* Pods_NewsDomo_Swift.framework */; };
 		C939EBFA1CC66F930099E20C /* ScrollImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C939EBF91CC66F930099E20C /* ScrollImageView.swift */; };
 		C94247841CBD42E4008321F7 /* SnapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94247831CBD42E4008321F7 /* SnapTableViewCell.swift */; };
 		C99AF6BE1CB6A6AF008DC7BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF6BD1CB6A6AF008DC7BA /* AppDelegate.swift */; };
@@ -40,9 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A2BC265FC6DA218A3F90549 /* Pods_NewsDomo_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsDomo_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		548EF5D7FDEE1190D0A54E6C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F665342FE80255C77F8B4A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		79764083C2DD2B1B012FAA2A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		57C2AFF678C3BB1650B504C7 /* Pods-NewsDomo-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsDomo-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewsDomo-Swift/Pods-NewsDomo-Swift.release.xcconfig"; sourceTree = "<group>"; };
+		8EFB8D6C0BE77EEF2254362F /* Pods-NewsDomo-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsDomo-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewsDomo-Swift/Pods-NewsDomo-Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		C939EBF91CC66F930099E20C /* ScrollImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollImageView.swift; sourceTree = "<group>"; };
 		C94247831CBD42E4008321F7 /* SnapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapTableViewCell.swift; sourceTree = "<group>"; };
 		C99AF6BA1CB6A6AF008DC7BA /* NewsDomo-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NewsDomo-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,7 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AD361936176F8F5ED20097D /* Pods.framework in Frameworks */,
+				342C66BE9557DDC101E2582F /* Pods_NewsDomo_Swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,19 +90,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		78E90BAF96A96976E9AF9A70 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				79764083C2DD2B1B012FAA2A /* Pods.debug.xcconfig */,
-				6F665342FE80255C77F8B4A3 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		97807BA55073C6FC2B246C7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				548EF5D7FDEE1190D0A54E6C /* Pods.framework */,
+				3A2BC265FC6DA218A3F90549 /* Pods_NewsDomo_Swift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -113,8 +106,8 @@
 				C99AF6D11CB6A6AF008DC7BA /* NewsDomo-SwiftTests */,
 				C99AF6DC1CB6A6AF008DC7BA /* NewsDomo-SwiftUITests */,
 				C99AF6BB1CB6A6AF008DC7BA /* Products */,
-				78E90BAF96A96976E9AF9A70 /* Pods */,
 				97807BA55073C6FC2B246C7A /* Frameworks */,
+				F59E39C72C00CE51F18A65CC /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -164,6 +157,15 @@
 			path = "NewsDomo-SwiftUITests";
 			sourceTree = "<group>";
 		};
+		F59E39C72C00CE51F18A65CC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8EFB8D6C0BE77EEF2254362F /* Pods-NewsDomo-Swift.debug.xcconfig */,
+				57C2AFF678C3BB1650B504C7 /* Pods-NewsDomo-Swift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -171,12 +173,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C99AF6E21CB6A6AF008DC7BA /* Build configuration list for PBXNativeTarget "NewsDomo-Swift" */;
 			buildPhases = (
-				DD55047E4AAE7DE815AB6FF4 /* Check Pods Manifest.lock */,
+				A7B4AB03B35D3AE0F950EA1D /* 📦 Check Pods Manifest.lock */,
 				C99AF6B61CB6A6AF008DC7BA /* Sources */,
 				C99AF6B71CB6A6AF008DC7BA /* Frameworks */,
 				C99AF6B81CB6A6AF008DC7BA /* Resources */,
-				5B9960D5803AC3F2552F5B41 /* Embed Pods Frameworks */,
-				6F6678C23013F8ABC56AF9F5 /* Copy Pods Resources */,
+				6A8BF6C462C96965B6A367A0 /* 📦 Embed Pods Frameworks */,
+				0F30A9504FB3CBA4AE4392EB /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -294,44 +296,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5B9960D5803AC3F2552F5B41 /* Embed Pods Frameworks */ = {
+		0F30A9504FB3CBA4AE4392EB /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewsDomo-Swift/Pods-NewsDomo-Swift-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6F6678C23013F8ABC56AF9F5 /* Copy Pods Resources */ = {
+		6A8BF6C462C96965B6A367A0 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewsDomo-Swift/Pods-NewsDomo-Swift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DD55047E4AAE7DE815AB6FF4 /* Check Pods Manifest.lock */ = {
+		A7B4AB03B35D3AE0F950EA1D /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,7 +494,7 @@
 		};
 		C99AF6E31CB6A6AF008DC7BA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79764083C2DD2B1B012FAA2A /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 8EFB8D6C0BE77EEF2254362F /* Pods-NewsDomo-Swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "NewsDomo-Swift/Info.plist";
@@ -504,7 +506,7 @@
 		};
 		C99AF6E41CB6A6AF008DC7BA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F665342FE80255C77F8B4A3 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 57C2AFF678C3BB1650B504C7 /* Pods-NewsDomo-Swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "NewsDomo-Swift/Info.plist";
