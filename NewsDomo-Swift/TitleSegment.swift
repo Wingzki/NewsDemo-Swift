@@ -18,6 +18,10 @@ class TitleSegment: UIView {
 
     weak var delegate : TitleSegmentDelegate?
     
+    
+    let buttonTagBase = 100
+    var index : Int = 100
+    
     var titleArray : Array<String>? {
         
         didSet {
@@ -68,12 +72,22 @@ class TitleSegment: UIView {
                 button.frame = CGRectMake(CGFloat(i) * width, 0, width, frame.size.height)
                 button.backgroundColor = UIColor.greenColor()
                 button.addTarget(self, action: #selector(buttonClicked(button:)), forControlEvents: UIControlEvents.TouchUpInside)
-                button.tag = i
+                button.tag = i + buttonTagBase
                 self.scrollView.addSubview(button)
+                
+                button.setTitleColor(UIColor.redColor(), forState: UIControlState.Selected)
+                
+                button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                 
                 if let title = self.titleArray?[i] {
                     
                     button.setTitle(title, forState: UIControlState.Normal)
+                    
+                }
+                
+                if i + buttonTagBase == self.index {
+                    
+                    button.selected = true
                     
                 }
                 
@@ -87,7 +101,17 @@ class TitleSegment: UIView {
     
     func buttonClicked(button button : UIButton) {
         
-        self.delegate?.buttonDidClicked(button.tag)
+        if let tempButton = self.scrollView.viewWithTag(self.index) as? UIButton {
+            
+            tempButton.selected = false
+            
+        }
+        
+        button.selected = true
+        
+        self.delegate?.buttonDidClicked(button.tag - buttonTagBase)
+        
+        self.index = button.tag
         
     }
 
