@@ -7,6 +7,7 @@ target :"NewsDomo-Swift" do
 #Networking
 pod "Alamofire"
 pod "AlamofireObjectMapper"
+pod "SwiftyJSON"
 
 #ImageCache
 pod "Kingfisher"

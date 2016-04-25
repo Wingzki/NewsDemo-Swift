@@ -24,9 +24,35 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var newsArray : NSArray?
     var imageURLArray : Array<String>?
     
-    var segment : TitleSegment?
-    var topView : ScrollImageView?
-    var tableView = UITableView()
+    lazy var segment : TitleSegment = {
+    
+        let temp = TitleSegment.init(frame: CGRectMake(0, 0, self.view.bounds.width, 40))
+        temp.titleArray = ["头条", "娱乐", "热点" ,"体育" ,"北京", "网易", "财经", "科技"]
+        temp.delegate = self
+        
+        return temp
+        
+    }()
+    
+    lazy var topView : ScrollImageView = {
+    
+        let temp = ScrollImageView.init(frame: CGRectMake(0, 0, self.view.bounds.width, 190))
+        
+        return temp
+        
+    }()
+    
+    lazy var tableView : UITableView = {
+        
+        let temp = UITableView.init(frame: CGRectMake(0, 40, self.view.bounds.width, self.view.bounds.height - 40 - 64))
+        
+        temp.delegate   = self
+        temp.dataSource = self
+        
+        return temp
+        
+    }()
+    
     var refresher = PullToRefresh()
     
     override func viewDidLoad() {
@@ -36,7 +62,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         addSubView()
         setupSubview()
         setupLayout()
-        setupData()
         
         getDataFromServer()
         
@@ -57,29 +82,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func addSubView() {
         
-        self.segment = TitleSegment.init(frame: CGRectMake(0, 0, self.view.bounds.width, 40))
-        
         self.view.addSubview(tableView)
-        self.view.addSubview(segment!)
+        self.view.addSubview(segment)
         
     }
     
     func setupLayout() {
         
-        self.topView = ScrollImageView.init(frame: CGRectMake(0, 0, self.view.bounds.width, 190))
-        
-        self.tableView.frame = CGRectMake(0, 40, self.view.bounds.width, self.view.bounds.height - 40 - 64)
+       
         
     }
     
     func setupSubview() {
         
         self.automaticallyAdjustsScrollViewInsets = false
-        
-        self.segment?.delegate = self
-        
-        self.tableView.delegate   = self
-        self.tableView.dataSource = self
         
         self.tableView.registerClass(SnapTableViewCell.self, forCellReuseIdentifier: CellSnap)
         self.tableView.registerClass(ImageTableViewCell.self, forCellReuseIdentifier: CellImage)
@@ -90,12 +106,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
         }
     
-    }
-    
-    func setupData() {
-        
-        self.segment?.titleArray = ["头条", "娱乐", "热点" ,"体育" ,"北京", "网易", "财经", "科技"]
-        
     }
     
     //    MARK: - Private
@@ -176,7 +186,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             if let adArray = urlDic["ads"] as? NSArray {
                 
-                self.topView!.imageURLArray = adArray.map({ adDic -> String in
+                self.topView.imageURLArray = adArray.map({ adDic -> String in
                     
                     if let url = adDic["imgsrc"] as? String {
                         
