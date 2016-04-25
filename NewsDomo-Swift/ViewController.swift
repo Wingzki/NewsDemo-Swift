@@ -11,6 +11,7 @@ import UIKit
 import Alamofire
 import Kingfisher
 import PullToRefresh
+import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TitleSegmentDelegate {
     
@@ -117,25 +118,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         Alamofire.request(Method.GET, url).responseJSON { response in
             
             switch response.result {
-            case .Success:
+            case let .Success(data):
                 
-                if let dic = response.result.value as? NSDictionary {
+                let json = JSON(data)
+                
+                if let adArray = json["T1348647853363"][0]["ads"] {
                     
-                    if let tempArray = dic["T1348647853363"] as? NSArray {
+                }
+                
+                if let tempArray = json["T1348647853363"].arrayObject {
+                    
+                    if let newsArray = tempArray as? NSArray {
                         
-                        self.handleBannerData(tempArray)
-                        
-                        let dataArray  = tempArray.subarrayWithRange(NSRange(location: 1,length: tempArray.count - 1))
-                        self.newsArray = dataArray
+                        self.newsArray  = newsArray.subarrayWithRange(NSRange(location: 1,length: tempArray.count - 1))
                         
                         self.tableView.tableHeaderView = self.topView
                         
                         self.tableView.reloadData()
-                        
+
                     }
                     
                 }
-        
+                
             case .Failure:
                 print(response.result.error)
                 
