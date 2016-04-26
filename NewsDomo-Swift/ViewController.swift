@@ -120,30 +120,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 
                 let json = JSON(data)
                 
-                if let adArray: Array<JSON> = json["T1348647853363"][0]["ads"].array {
+                let adArray: Array<JSON> = json["T1348647853363"][0]["ads"].arrayValue
+                
+                self.topView.imageURLArray = adArray.map({ adDic -> String in
                     
-                    self.topView.imageURLArray = adArray.map({ adDic -> String in
-                        
-                        if let url = adDic["imgsrc"].string {
-                            
-                            return url
-                            
-                        }
-                        
-                        return ""
-                        
-                    })
-
-                }
+                    return adDic["imgsrc"].stringValue
+                    
+                })
+                
                 
                 if let tempArray: NSArray = json["T1348647853363"].arrayObject {
                     
                     self.newsArray = tempArray.subarrayWithRange(NSRange(location: 1,length: tempArray.count - 1))
                     
-                    self.tableView.tableHeaderView = self.topView
-                    self.tableView.reloadData()
-                    
                 }
+                
+                self.tableView.tableHeaderView = self.topView
+                self.tableView.reloadData()
                 
             case .Failure:
                 print(response.result.error)
