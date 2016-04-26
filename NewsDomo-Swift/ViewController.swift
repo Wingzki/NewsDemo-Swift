@@ -83,14 +83,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func addSubView() {
         
-        self.view.addSubview(tableView)
         self.view.addSubview(segment)
+        self.view.addSubview(tableView)
         
     }
     
     func setupLayout() {
-        
-       
         
     }
     
@@ -103,7 +101,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.tableView.addPullToRefresh(self.refresher) { 
             
-            self.getDataFromServer01()
+            self.getDataFromServer()
             
         }
     
@@ -122,85 +120,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 
                 let json = JSON(data)
                 
-                if let adArray = json["T1348647853363"][0]["ads"] {
+                if let adArray: Array<JSON> = json["T1348647853363"][0]["ads"].array {
                     
+                    self.topView.imageURLArray = adArray.map({ adDic -> String in
+                        
+                        if let url = adDic["imgsrc"].string {
+                            
+                            return url
+                            
+                        }
+                        
+                        return ""
+                        
+                    })
+
                 }
                 
-                if let tempArray = json["T1348647853363"].arrayObject {
+                if let tempArray: NSArray = json["T1348647853363"].arrayObject {
                     
-                    if let newsArray = tempArray as? NSArray {
-                        
-                        self.newsArray  = newsArray.subarrayWithRange(NSRange(location: 1,length: tempArray.count - 1))
-                        
-                        self.tableView.tableHeaderView = self.topView
-                        
-                        self.tableView.reloadData()
-
-                    }
+                    self.newsArray = tempArray.subarrayWithRange(NSRange(location: 1,length: tempArray.count - 1))
+                    
+                    self.tableView.tableHeaderView = self.topView
+                    self.tableView.reloadData()
                     
                 }
                 
             case .Failure:
                 print(response.result.error)
-                
-            }
-            
-        }
-        
-    }
-    
-    func getDataFromServer01() {
-        
-        let url = second
-        
-        Alamofire.request(Method.GET, url).responseJSON { response in
-            
-            self.tableView.endRefreshing()
-            
-            switch response.result {
-            case .Success:
-                
-                if let dic = response.result.value as? NSDictionary {
-                    
-                    if let tempArray = dic["T1348647853363"] as? NSArray {
-                        
-                        self.newsArray = tempArray
-                        
-                        self.tableView.tableHeaderView = self.topView
-                        
-                        self.tableView.reloadData()
-                        
-                    }
-                    
-                }
-                
-            case .Failure:
-                print(response.result.error)
-                
-            }
-            
-        }
-        
-    }
-
-    
-    func handleBannerData(dataArray: NSArray) {
-        
-        if let urlDic = dataArray[0] as? NSDictionary {
-            
-            if let adArray = urlDic["ads"] as? NSArray {
-                
-                self.topView.imageURLArray = adArray.map({ adDic -> String in
-                    
-                    if let url = adDic["imgsrc"] as? String {
-                        
-                        return url
-                        
-                    }
-                    
-                    return ""
-                    
-                })
                 
             }
             
