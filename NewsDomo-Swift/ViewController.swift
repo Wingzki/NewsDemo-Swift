@@ -13,7 +13,7 @@ import Kingfisher
 import PullToRefresh
 import SwiftyJSON
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TitleSegmentDelegate {
+class ViewController: UIViewController, TitleSegmentDelegate {
     
     let firstURL = "http://c.m.163.com/nc/article/headline/T1348647853363/0-20.html?from=toutiao&passport=&devId=ECIDH5J3VtJNmnlsgmFGFUgU324iLqCs%2FTN6KzBE6GrzJ6En48foT5R9wH%2FOcJXY&size=20&version=6.0&spever=false&net=wifi&lat=BNsQafMiQurgbJgINKDqOA%3D%3D&lon=bSHK%2B1pn5rA0G0bX3U5%2FOQ%3D%3D&ts=1460300866&sign=sZkXOQmPZa571vREFlmf4Ko0tVPzkKGHYxTTQ3x8M1N48ErR02zJ6%2FKXOnxX046I&encryption=1&canal=appstore"
     
@@ -22,8 +22,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let CellSnap  = "SnapTableViewCell"
     let CellImage = "ImageTableViewCell"
     
-    var newsArray : NSArray?
     var imageURLArray : Array<String>?
+    var tableViewProtocol : TableviewProtocol?
     
     lazy var segment : TitleSegment = {
     
@@ -46,9 +46,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     lazy var tableView : UITableView = {
         
         let temp = UITableView.init(frame: CGRectMake(0, 40, self.view.bounds.width, self.view.bounds.height - 40 - 64))
-        
-        temp.delegate   = self
-        temp.dataSource = self
         
         return temp
         
@@ -128,10 +125,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     
                 })
                 
-                
                 if let tempArray: NSArray = json["T1348647853363"].arrayObject {
                     
-                    self.newsArray = tempArray.subarrayWithRange(NSRange(location: 1,length: tempArray.count - 1))
+                    let newsArray = tempArray.subarrayWithRange(NSRange(location: 1,length: tempArray.count - 1))
+                    
+                    self.setupTableViewData(newsArray)
                     
                 }
                 
@@ -147,72 +145,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
+    func setupTableViewData(array : NSArray?) {
+        
+        self.tableViewProtocol = TableviewProtocol()
+        
+        self.tableViewProtocol?.newsArray = array;
+        
+        self.tableView.delegate = self.tableViewProtocol
+        self.tableView.dataSource = self.tableViewProtocol
+        
+    }
+    
     //    MARK: - delegate
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if let count = self.newsArray?.count {
-            
-            return count
-            
-        }
-        
-        return 0
-        
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        if indexPath.row % 2 == 0 {
-            
-            let cell : SnapTableViewCell = tableView.dequeueReusableCellWithIdentifier(CellSnap) as! SnapTableViewCell
-            
-            if let data : NSDictionary = self.newsArray?[indexPath.row] as? NSDictionary {
-                
-                cell.titleLabel.text  = data["title"] as? String
-                cell.detailLabel.text = data["digest"] as? String
-                
-                if let url : String = data["img"] as? String {
-
-                     cell.testImageView.kf_setImageWithURL(NSURL.init(string: url)!)
-                    
-                }
-                
-            }
-            
-            return cell
-            
-        }else {
-            
-            let cell : ImageTableViewCell = tableView.dequeueReusableCellWithIdentifier(CellImage) as! ImageTableViewCell
-            
-            if let data : NSDictionary = self.newsArray?[indexPath.row] as? NSDictionary {
-                
-                cell.titleLabel.text  = data["title"] as? String
-                
-                if let url : String = data["img"] as? String {
-                    
-                    cell.bigImageView.kf_setImageWithURL(NSURL.init(string: url)!)
-                    
-                }
-                
-            }
-            
-            return cell
-            
-        }
-        
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        
-        if indexPath.row % 2 == 0 {
-            return 90.0
-        }else {
-            return 170.0
-        }
-        
-    }
     
     func buttonDidClicked(index: Int) {
         
